@@ -10,7 +10,10 @@ def about(request):
 
 def result(request):
     text = request.GET['fulltext']
-    words = text.split()
+
+    words = text.split() 
+    #split - 괄호 안의 값으로 문자열을 나누어줌
+
     word_dictionary={}
 
     for word in words:
@@ -21,4 +24,5 @@ def result(request):
             #add to dictionary
             word_dictionary[word]=1
 
-    return render(request, 'result.html', {'full': text,'total': len(words), 'di':word_dictionary.items()})
+    #len = 문자열 길이 세는 함수
+    return render(request, 'result.html', {'full': text,'total': len(text),'total_s':len(text.replace(" ", "")) ,'di':word_dictionary.items()})
